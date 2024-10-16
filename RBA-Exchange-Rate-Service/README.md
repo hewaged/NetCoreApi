@@ -1,6 +1,6 @@
 # Microservice Architecture in ASP.NET Core
 
-This demo shows a simple example of the microservices architecture using ASP.NET Core 6. It includes instructions on building microservices and building API gateways with [Ocelot](https://github.com/ThreeMammals/Ocelot), and how to utilise [MassTransit](http://masstransit-project.com) as distributed application framework, [RabbitMQ](https://www.rabbitmq.com) as the message broker and how to unit test microservices using [xUnit](https://xunit.net). And it also shows how to deploy microservices using [Docker](https://www.docker.com/resources/what-container) containers on Linux distributions.
+This demo shows a simple example of the microservices architecture using .NET 8. It includes instructions on building microservices and building API gateways with [Ocelot](https://github.com/ThreeMammals/Ocelot), and how to utilise [MassTransit](http://masstransit-project.com) as distributed application framework, [RabbitMQ](https://www.rabbitmq.com) as the message broker and how to unit test microservices using [xUnit](https://xunit.net). And it also shows how to deploy microservices using [Docker](https://www.docker.com/resources/what-container) containers on Linux distributions.
 
 ## Introduction
 
@@ -56,7 +56,7 @@ Test project includes some unit tests.
 - [FluentAssertions](https://fluentassertions.com/)
 
 ## A number of future enhancements can be made to this solution. Below is a list just to name a few:
-- Add identity and auth
+- Add identity and authentication
 - Add persistence data storage
 - Add integration tests and more unit tests
 - Add load balancing
