@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+	<ItemGroup>		
+		<None Remove="UnitTests\appsettings.aud.json" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="FluentAssertions" Version="6.12.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.10" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+		<PackageReference Include="Moq" Version="4.20.72" />
+		<PackageReference Include="WebMotions.Fake.Authentication.JwtBearer" Version="8.0.1" />
+		<PackageReference Include="xunit" Version="2.9.2" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Exchange.Rates.RBA.Contracts\Exchange.Rates.RBA.Contracts.csproj" />
+		<ProjectReference Include="..\Exchange.Rates.RBA.Core\Exchange.Rates.RBA.Core.csproj" />
+
+		<ProjectReference Include="..\Exchange.Rates.Aud.OpenApi\Exchange.Rates.Aud.OpenApi.csproj" />
+		<ProjectReference Include="..\Exchange.Rates.Aud.Polling.Api\Exchange.Rates.Aud.Polling.Api.csproj" />
+		<ProjectReference Include="..\Exchange.Rates.RBA.Contracts\Exchange.Rates.RBA.Contracts.csproj" />
+		<ProjectReference Include="..\Exchange.Rates.RBA.Core\Exchange.Rates.RBA.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="appsettings.aud.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

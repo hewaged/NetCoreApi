@@ -1,0 +1,17 @@
+{
+  "Routes": [     
+		{
+			"DownstreamPathTemplate": "/api/exchangeratesaud/audbaserates",
+			"DownstreamScheme": "http",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "exchange.rates.aud.openapi",
+					"Port": 80
+				}
+			],
+			"UpstreamPathTemplate": "/exchangeratesaud/audbaserates",
+			"UpstreamHttpMethod": [ "GET", "OPTIONS" ]
+		}
+  ],
+  "GlobalConfiguration": {}
+}

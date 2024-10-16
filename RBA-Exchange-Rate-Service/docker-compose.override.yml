@@ -1,0 +1,47 @@
+services:
+    rabbitmq:
+        environment:
+            - RABBITMQ_DEFAULT_USER=guest
+            - RABBITMQ_DEFAULT_PASS=guest
+        ports:
+            - 5672:5672
+            - 15672:15672   
+
+    exchange.rates.aud.openapi:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - ASPNETCORE_URLS=https://+:443;http://+:80
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/certificate-aud-exchangerate.pfx
+            - Kestrel__Certificates__Default__Password=SuperSecret
+        ports:
+            - 5000:80
+            - 5001:443
+        volumes:
+            - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+            - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+    exchange.rates.aud.polling.api:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - ASPNETCORE_URLS=https://+:443;http://+:80
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/certificate-aud-exchangerate.pfx
+            - Kestrel__Certificates__Default__Password=SuperSecret
+        ports:
+            - 6000:80
+            - 6001:443
+        volumes:
+            - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+            - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+    exchange.rates.rba.gateway:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - ASPNETCORE_URLS=https://+:443;http://+:80
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/certificate-aud-exchangerate.pfx
+            - Kestrel__Certificates__Default__Password=SuperSecret
+        ports:
+            - 8000:80
+            - 8001:443
+        volumes:
+          - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+          - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

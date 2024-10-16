@@ -1,0 +1,45 @@
+services:
+    rabbitmq:
+        container_name: rabbitmq
+        hostname: rabbitmq
+        image: masstransit/rabbitmq:latest
+        networks:
+            - common_network    
+
+    exchange.rates.aud.openapi:
+        container_name: exchange.rates.aud.openapi
+        image: exchange.rates.aud.openapi:latest
+        build:
+            context: .
+            dockerfile: Exchange.Rates.Aud.OpenApi/Dockerfile
+        depends_on:
+            - rabbitmq
+        networks:
+            - common_network
+
+    exchange.rates.aud.polling.api:
+        container_name: exchange.rates.aud.polling.api
+        image: exchange.rates.aud.polling.api:latest
+        build:
+            context: .
+            dockerfile: Exchange.Rates.Aud.Polling.Api/Dockerfile
+        depends_on:
+            - rabbitmq
+        networks:
+            - common_network
+
+    exchange.rates.rba.gateway:
+        container_name: exchange.rates.rba.gateway
+        image: exchange.rates.rba.gateway:latest
+        build:
+            context: .
+            dockerfile: Exchange.Rates.RBA.Gateway/Dockerfile
+        restart: on-failure
+        networks:
+            - common_network
+        depends_on:
+            - exchange.rates.aud.openapi
+
+networks:
+    common_network:
+        driver: bridge
